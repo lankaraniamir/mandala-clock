@@ -1,6 +1,6 @@
 function setup() {
-	h = 1000
-	w = 1000
+	h = 800
+	w = 800
 	createCanvas(h, w);
 	rotation = 0
 	colors = [];
