@@ -1,6 +1,7 @@
 # Pointy-Clock-Visualizer
-Simple program representing a clock abstractly. Download the folder and open index.html on your
-browser to see a representation of the current time.
+Simple program representing a clock abstractly. To see visualizer, go to its github 
+page found on right sidebar. To run locally, download the folder and open index.html 
+on your browser.
 
 The hour is represented by the number of colors in the visualizer (easily
 visualizable by the number of shapes in the corner representing each color
@@ -14,7 +15,7 @@ at 0 minutes, it's a circle. At 1 minute, it' a line. At 2 minutes, it's a
 triangle. At 3 minutes, it's a square. And so on continuing into star-like
 shapes up to 60 outward points that make the edge easily countable.
 
-The number of seconds is represented by the number of occurences of the shape within the
-outer shape. Every 15 seconds, a less inwardly pointy version of the shape (or
-in some cases, a circle) will appear in the same color as the background making
-it easy to approximate how many seconds have occurred.
+The number of seconds is represented by the number of occurences of the shape
+within the outer shape. Every 15 seconds, a less inwardly pointy version of the
+shape (or in some cases, a circle) will appear in the same color as the background
+making it easy to approximate how many seconds have occurred.
