@@ -92,14 +92,15 @@ function draw_semi_undulating_shape(points, radius, x_origin, y_origin, j) {
 
 	half = Math.floor(points / 2);
 	skip = get_highest_relevant_coprime(half, points);
-	if (skip > 1)
-		skip = get_highest_relevant_coprime(skip-1, points);
-	while (skip > 11/30*points)
-		skip = get_highest_relevant_coprime(skip-1, points);
 	if (skip <= 1) {
 		circle(0, 0, 2*radius)
 		return 0;
 	}
+	if (skip > 1)
+		skip = get_highest_relevant_coprime(skip-1, points);
+	while (skip > 11/30*points)
+		skip = get_highest_relevant_coprime(skip-1, points);
+
 	beginShape();
 	for (let i = 0; i < points; i++) {
 		cur = (i * skip) % points;
