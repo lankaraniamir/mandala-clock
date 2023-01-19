@@ -184,7 +184,6 @@ function draw() {
 	} else {
 		color_amount = pattern;
 		colors[0] = white;
-		stroke(black)
 		background(black);
 	}
 
@@ -192,6 +191,8 @@ function draw() {
 		l = .041
 		sep = .09
 		r = .95*width*l
+		if (points == 2)
+			stroke(colors[i])
 		if (i == 0) {
 			draw_hour(points, r, width*l, height*l, 0);
 		} else if (i == 1) {
@@ -217,6 +218,7 @@ function draw() {
 		} else if (i == 11) {
 			draw_hour(points, r, width*(1-l), height*(1-sep), 11);
 		}
+		stroke(black)
 	}
 
 	draw_shapes(width/2, height/2, color_amount, points, subsections);
