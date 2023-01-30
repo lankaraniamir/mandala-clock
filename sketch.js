@@ -115,7 +115,7 @@ function draw_semi_undulating_shape(points, radius, x_origin, y_origin, j) {
 function draw_shapes(x_origin, y_origin, color_amount, points, subsections) {
 	translate(x_origin, y_origin)
 	rotation = rotation + PI / 7000
-	rotate(rotation)
+// 	rotate(rotation)
 
 	r_outer = .88 * (subsections * width / 120) + .05 * width;
 	diminish = 1.25
