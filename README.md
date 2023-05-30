@@ -1,4 +1,4 @@
-# Pointy-Clock-Visualizer
+# Mandala Clock
 Simple program representing a clock abstractly. To see visualizer, go to its github 
 page found on right sidebar. To run locally, download the folder and open index.html 
 on your browser.
