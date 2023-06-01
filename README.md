@@ -1,6 +1,7 @@
 # [Mandala Clock](https://lankaraniamir.github.io/mandala-clock/)
-Abstract clock measuring hours in number of colors, minutes in number of shape points, and seconds in number of occurences of the shape 
+Abstract clock measuring hours in number of colors, minutes in number of shape points, and seconds in number of occurences of the shape
 
+![alt text](https://github.com/lankaraniamir/mandala-clock/blob/main/example_image_a.jpg?raw=true)
 ## Hours
   - Number of colors used in the visualizer from 1 to 12
   - Each color is easily seen as a distinct shape in the corners of the page
