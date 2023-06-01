@@ -1,5 +1,5 @@
 # [Mandala Clock](https://lankaraniamir.github.io/mandala-clock/)
-Abstract mandala visual created using the current second, minute, and hour 
+Abstract clock measuring hours in number of colors, minutes in number of shape points, and seconds in number of occurences of the shape 
 
 ## Hours
   - Number of colors used in the visualizer from 1 to 12
