@@ -37,8 +37,10 @@ function setup() {
 		colors[j] = color(cur[0], cur[1], cur[2], 255);
 	}
 	
+
 	// Day of month defines stroke weight
 	strokeWeight(2.5*(day()-1)/30)
+	stroke_color = color(17)
 }
 
 function ensure_difference(new_col, old_col) {
@@ -118,7 +120,7 @@ function draw_semi_undulating_shape(points, radius, x_origin, y_origin, j) {
 function draw_shapes(x_origin, y_origin, color_amount, points, subsections) {
 	translate(x_origin, y_origin)
 	rotation = rotation + PI / 7000
-// 	rotate(rotation)
+	// rotate(rotation)
 
 	r_outer = .88 * (subsections * width / 120) + .05 * width;
 	diminish = 1.25
@@ -194,8 +196,12 @@ function draw() {
 		l = .041
 		sep = .09
 		r = .95*width*l
+		
 		if (points == 2)
 			stroke(colors[i])
+		else
+			stroke(stroke_color)
+		
 		if (i == 0) {
 			draw_hour(points, r, width*l, height*l, 0);
 		} else if (i == 1) {
@@ -221,7 +227,6 @@ function draw() {
 		} else if (i == 11) {
 			draw_hour(points, r, width*(1-l), height*(1-sep), 11);
 		}
-		stroke(black)
 	}
 
 	draw_shapes(width/2, height/2, color_amount, points, subsections);
