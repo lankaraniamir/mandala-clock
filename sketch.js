@@ -38,7 +38,7 @@ function setup() {
 	}
 	
 	// Day of month defines stroke weight
-	strokeWeight(3*(day()-1)/30)
+	strokeWeight(2.5*(day()-1)/30)
 }
 
 function ensure_difference(new_col, old_col) {
