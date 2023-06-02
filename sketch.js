@@ -3,6 +3,8 @@ function setup() {
 	w = 900
 	createCanvas(h, w);
 	rotation = 0
+	
+	// Colors randomly created upon initialization
 	colors = [];
 	temp_colors = [];
 	c1 = Math.floor(Math.random() * 256);
@@ -34,7 +36,9 @@ function setup() {
 		cur = temp_colors[j];
 		colors[j] = color(cur[0], cur[1], cur[2], 255);
 	}
-
+	
+	// Day of month defines stroke weight
+	strokeWeight(3*(day()-1)/30)
 }
 
 function ensure_difference(new_col, old_col) {
