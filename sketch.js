@@ -84,11 +84,10 @@ function draw_undulating_shape(points, radius, x_origin, y_origin, j) {
 }
 
 function draw_semi_undulating_shape(points, radius, x_origin, y_origin, j) {
-	if (hour() > 12) {
-		fill(white)
-	} else {
-		fill(black)
-	}
+    if (colors[0] == black)
+        fill(white)
+    else
+        fill(black)
 
 	half = Math.floor(points / 2);
 	skip = get_highest_relevant_coprime(half, points);
