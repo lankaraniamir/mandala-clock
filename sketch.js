@@ -169,13 +169,13 @@ function draw() {
 
 	loggable = true
 	if (loggable & subsections == 0) {
-		console.log(points-1)
+		console.log(points - 1)
 		loggable = false
 	} else if (!loggable & subsections == 1) {
 		loggable = true
 	}
 
-	stroke(black)
+	stroke(stroke_color)
 	if (pattern > 12) {
 		color_amount = pattern-12;
 		colors[0] = black;
