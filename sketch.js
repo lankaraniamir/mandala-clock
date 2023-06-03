@@ -72,10 +72,10 @@ function draw_undulating_shape(points, radius, x_origin, y_origin, j) {
 	if (points == 1) {
 		circle(0, 0, 2*radius)
 		return 0;
-	}
-
-	if (points == 2)
+	} else if (points == 2) {
 		stroke(colors[j])
+	}
+	
 	beginShape();
 	half = Math.floor(points / 2);
 	skip = get_highest_relevant_coprime(half, points);
@@ -179,12 +179,10 @@ function draw() {
 	if (pattern > 12) {
 		color_amount = pattern-12;
 		colors[0] = black;
-		// stroke(white)
 		background(white);
 	} else if (pattern == 0) {
 		color_amount = 12;
 		colors[0] = black;
-		// stroke(white)
 		background(white);
 	} else {
 		color_amount = pattern;
