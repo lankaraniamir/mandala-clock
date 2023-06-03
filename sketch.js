@@ -72,6 +72,7 @@ function draw_undulating_shape(points, radius, j) {
 	if (points == 1) {
 		circle(0, 0, 2*radius)
 		return 0;
+	}
 	
 	beginShape();
 	half = Math.floor(points / 2);
@@ -166,14 +167,6 @@ function draw() {
 	points = minute()+1; //edges=minutes
 	subsections = second();
 
-	loggable = true
-	if (loggable & subsections == 0) {
-		console.log(points - 1)
-		loggable = false
-	} else if (!loggable & subsections == 1) {
-		loggable = true
-	}
-
 	stroke(stroke_color)
 	if (pattern > 12) {
 		color_amount = pattern-12;
@@ -197,10 +190,10 @@ function draw() {
 	else
 		stroke(stroke_color)
 	
-    if (color_amount >= 1) {
+	if (color_amount >= 1) {
 		if (points == 2)
 			stroke(colors[0])
-        draw_hour(points, r, width * l, height * l, 0);
+		draw_hour(points, r, width * l, height * l, 0);
 	} if (color_amount >= 2) {
 		if (points == 2)
 			stroke(colors[1])
