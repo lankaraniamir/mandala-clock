@@ -197,47 +197,47 @@ function draw() {
 	} if (color_amount >= 2) {
 		if (points == 2)
 			stroke(colors[1])
-        draw_hour(points, r, width * (1 - l), height * (1 - l), 1);
-    } if (color_amount >= 3) {
+        	draw_hour(points, r, width * (1 - l), height * (1 - l), 1);
+    	} if (color_amount >= 3) {
 		if (points == 2)
 			stroke(colors[2])
-        draw_hour(points, r, width * l, height * (1 - l), 2);
+        	draw_hour(points, r, width * l, height * (1 - l), 2);
 	} if (color_amount >= 4) {
 		if (points == 2)
 			stroke(colors[3])
-        draw_hour(points, r, width * (1 - l), height * l, 3);
+        	draw_hour(points, r, width * (1 - l), height * l, 3);
 	} if (color_amount >= 5) {
 		if (points == 2)
 			stroke(colors[4])
-        draw_hour(points, r, width * sep, height * (1 - l), 4);
+        	draw_hour(points, r, width * sep, height * (1 - l), 4);
 	} if (color_amount >= 6) {
 		if (points == 2)
 			stroke(colors[5])
-        draw_hour(points, r, width * (1 - sep), height * l, 5);
+        	draw_hour(points, r, width * (1 - sep), height * l, 5);
 	} if (color_amount >= 7) {
 		if (points == 2)
 			stroke(colors[6])
-        draw_hour(points, r, width * l, height * (1 - sep), 6);
+        	draw_hour(points, r, width * l, height * (1 - sep), 6);
 	} if (color_amount >= 8) {
 		if (points == 2)
-			stroke(colors[7]
-        draw_hour(points, r, width * (1 - l), height * sep, 7);
+			stroke(colors[7])
+        	draw_hour(points, r, width * (1 - l), height * sep, 7);
 	} if (color_amount >= 9) {
 		if (points == 2)
-			stroke(colors[8]
-        draw_hour(points, r, width * (1 - sep), height * (1 - l), 8);
+			stroke(colors[8])
+        	draw_hour(points, r, width * (1 - sep), height * (1 - l), 8);
 	} if (color_amount >= 10) {
 		if (points == 2)
-			stroke(colors[9]
-        draw_hour(points, r, width * sep, height * l, 9);
+			stroke(colors[9])
+        	draw_hour(points, r, width * sep, height * l, 9);
 	} if (color_amount >= 11) {
 		if (points == 2)
-			stroke(colors[10]
-        draw_hour(points, r, width * l, height * sep, 10);
+			stroke(colors[10])
+        	draw_hour(points, r, width * l, height * sep, 10);
 	} if (color_amount >= 12) {
 		if (points == 2)
-			stroke(colors[11]
-        draw_hour(points, r, width * (1 - l), height * (1 - sep), 11);
+			stroke(colors[11])
+        	draw_hour(points, r, width * (1 - l), height * (1 - sep), 11);
 	}
 
 	draw_shapes(width/2, height/2, color_amount, points, subsections);
