@@ -11,7 +11,7 @@ function setup() {
 	c2 = Math.floor(Math.random() * 256);
 	c3 = Math.floor(Math.random() * 256);
 	temp_colors[0] = [c1, c2, c3];
-	for (let i = 1; i < 12; i++) {
+	for (let i = 1; i < 11; i++) {
 		truth_check = false
 		while (!truth_check) {
 			c1 = Math.floor(Math.random() * 256);
@@ -32,7 +32,7 @@ function setup() {
 	}
 	white = color(255);
 	black = color(0);
-	for (let j = 0; j < 12; j++) {
+	for (let j = 0; j < 11; j++) {
 		cur = temp_colors[j];
 		colors[j] = color(cur[0], cur[1], cur[2], 255);
 	}
@@ -72,9 +72,7 @@ function draw_undulating_shape(points, radius, x_origin, y_origin, j) {
 	if (points == 1) {
 		circle(0, 0, 2*radius)
 		return 0;
-	} else if (points == 2) {
-		stroke(colors[j])
-	}
+
 	
 	beginShape();
 	half = Math.floor(points / 2);
@@ -125,6 +123,8 @@ function draw_shapes(x_origin, y_origin, color_amount, points, subsections) {
 	r_outer = .88 * (subsections * width / 120) + .05 * width;
 	diminish = 1.25
 	for (let j = 0; j < subsections; j++) {
+		if (points == 2)
+			stroke(stroke_color)
 		if (j == 0) {
 			r = r_outer+.037*subsections*width/120
 			// rotate(rotation)
@@ -190,41 +190,62 @@ function draw() {
 		background(black);
 	}
 
-	for (let i = color_amount-1; i >= 0; i--) {
-		l = .041
-		sep = .09
-		r = .95*width*l
-		
+	l = .041
+	sep = .09
+	r = .95*width*l
+	if (points == 1)
+		stroke(colors[0])
+	else
+		stroke(stroke_color)
+	
+    if (color_amount >= 1) {
 		if (points == 2)
-			stroke(colors[i])
-		else
-			stroke(stroke_color)
-		
-		if (i == 0) {
-			draw_hour(points, r, width*l, height*l, 0);
-		} else if (i == 1) {
-			draw_hour(points, r, width*(1-l), height*(1-l), 1);
-		} else if (i == 2) {
-			draw_hour(points, r, width*l, height*(1-l), 2);
-		} else if (i == 3) {
-			draw_hour(points, r, width*(1-l), height*l, 3);
-		} else if (i == 4) {
-			draw_hour(points, r, width*sep, height*(1-l), 4);
-		} else if (i == 5) {
-			draw_hour(points, r, width*(1-sep), height*l, 5);
-		} else if (i == 6) {
-			draw_hour(points, r, width*l, height*(1-sep), 6);
-		} else if (i == 7) {
-			draw_hour(points, r, width*(1-l), height*sep, 7);
-		} else if (i == 8) {
-			draw_hour(points, r, width*(1-sep), height*(1-l), 8);
-		} else if (i == 9) {
-			draw_hour(points, r, width*sep, height*l, 9);
-		} else if (i == 10) {
-			draw_hour(points, r, width*l, height*sep, 10);
-		} else if (i == 11) {
-			draw_hour(points, r, width*(1-l), height*(1-sep), 11);
-		}
+			stroke(colors[0])
+        draw_hour(points, r, width * l, height * l, 0);
+	} if (color_amount >= 2) {
+		if (points == 2)
+			stroke(colors[1])
+        draw_hour(points, r, width * (1 - l), height * (1 - l), 1);
+    } if (color_amount >= 3) {
+		if (points == 2)
+			stroke(colors[2])
+        draw_hour(points, r, width * l, height * (1 - l), 2);
+	} if (color_amount >= 4) {
+		if (points == 2)
+			stroke(colors[3])
+        draw_hour(points, r, width * (1 - l), height * l, 3);
+	} if (color_amount >= 5) {
+		if (points == 2)
+			stroke(colors[4])
+        draw_hour(points, r, width * sep, height * (1 - l), 4);
+	} if (color_amount >= 6) {
+		if (points == 2)
+			stroke(colors[5])
+        draw_hour(points, r, width * (1 - sep), height * l, 5);
+	} if (color_amount >= 7) {
+		if (points == 2)
+			stroke(colors[6])
+        draw_hour(points, r, width * l, height * (1 - sep), 6);
+	} if (color_amount >= 8) {
+		if (points == 2)
+			stroke(colors[7]
+        draw_hour(points, r, width * (1 - l), height * sep, 7);
+	} if (color_amount >= 9) {
+		if (points == 2)
+			stroke(colors[8]
+        draw_hour(points, r, width * (1 - sep), height * (1 - l), 8);
+	} if (color_amount >= 10) {
+		if (points == 2)
+			stroke(colors[9]
+        draw_hour(points, r, width * sep, height * l, 9);
+	} if (color_amount >= 11) {
+		if (points == 2)
+			stroke(colors[10]
+        draw_hour(points, r, width * l, height * sep, 10);
+	} if (color_amount >= 12) {
+		if (points == 2)
+			stroke(colors[11]
+        draw_hour(points, r, width * (1 - l), height * (1 - sep), 11);
 	}
 
 	draw_shapes(width/2, height/2, color_amount, points, subsections);
