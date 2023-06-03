@@ -67,12 +67,11 @@ function get_highest_relevant_coprime(skip, n) {
 	return skip
 }
 
-function draw_undulating_shape(points, radius, x_origin, y_origin, j) {
+function draw_undulating_shape(points, radius, j) {
 	fill(colors[j])
 	if (points == 1) {
 		circle(0, 0, 2*radius)
 		return 0;
-
 	
 	beginShape();
 	half = Math.floor(points / 2);
@@ -87,11 +86,11 @@ function draw_undulating_shape(points, radius, x_origin, y_origin, j) {
 	endShape();
 }
 
-function draw_semi_undulating_shape(points, radius, x_origin, y_origin, j) {
-    if (colors[0] == black)
-        fill(white)
-    else
-        fill(black)
+function draw_semi_undulating_shape(points, radius, j) {
+	if (colors[0] == black)
+		fill(white)
+	else
+		fill(black)
 
 	half = Math.floor(points / 2);
 	skip = get_highest_relevant_coprime(half, points);
