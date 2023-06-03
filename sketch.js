@@ -131,11 +131,11 @@ function draw_shapes(x_origin, y_origin, color_amount, points, subsections) {
 			draw_undulating_shape(points, r, x_origin, y_origin, j)
 		} else if (j % 15 != 0) {
 			r = r_outer * (1 - j / subsections)^diminish;
-			rotate(rotation + 1/j);
+			rotate(rotation + 1 / (j+3));
 			draw_undulating_shape(points, r, x_origin, y_origin, j%color_amount);
 		} else {
 			r = r_outer * (1 - j / subsections)^diminish;
-			rotate(8*rotation + 3/j)
+			rotate(8*rotation + 3 / (j+9))
 			draw_semi_undulating_shape(points, r, x_origin, y_origin, j%color_amount);
 			if (points > 1)
 				draw_undulating_shape(points, r, x_origin, y_origin, j%color_amount);
