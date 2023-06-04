@@ -235,7 +235,7 @@ function draw_hour(points, width, cur) {
 }
 
 function write_time(width, height, hour, minute, second) {
-    fill(color(90, 90, 90));
+    fill(color(255, 90, 90));
     text(hour + ":" + minute + ":" + second + ":" + day, 4*width / 5, height-4);
 }
 
