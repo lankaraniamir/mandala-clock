@@ -157,16 +157,17 @@ function draw_shapes(x_origin, y_origin, color_amount, points, subsections) {
     r_outer = .88 * (subsections * width / 120) + .05 * width;
     diminish = 1.25
     for (let j = 0; j < subsections; j++) {
-        if (j == 0) {
-            r = r_outer + .037 * subsections * width / 120
-            draw_undulating_shape(points, r, j, color_amount)
-        } else if (j % 15 != 0) {
+        if (j % 15 != 0) {
             r = r_outer * (1 - j / subsections) ^ diminish;
             rotate(rotation + 1 / (j**.7 + 3));
             draw_undulating_shape(points, r, j, color_amount);
+        } else if (j == 0) {
+            r = r_outer + .037 * subsections * width / 120
+            draw_undulating_shape(points, r, j, color_amount)
         } else {
             r = r_outer * (1 - j / subsections) ^ diminish;
-            rotate(8 * rotation + 3 / (j))
+            // rotate(8 * rotation + 3 / (j**.7+3))
+            rotate(8 * rotation + 3 / (j**.7+3))
             draw_semi_undulating_shape(points, r, j, color_amount);
             if (points > 1)
                 draw_undulating_shape(points, r, j, color_amount);
@@ -233,10 +234,10 @@ function draw_hour(points, width, cur) {
     }
 }
 
-function write_time(width, height, hour, minute, second) {
-    fill(color(90, 90, 90));
-    text(hour + ":" + minute + ":" + second + ":" + day, 4*width / 5, height-4);
-}
+// function write_time(width, height, hour, minute, second) {
+//     fill(color(90, 90, 90));
+//     text(hour + ":" + minute + ":" + second + ":" + day, 4*width / 5, height-4);
+// }
 
 function draw() {
     pattern = hour();
@@ -259,7 +260,7 @@ function draw() {
     // background(background_color)
 
 
-    write_time(width, height, pattern, points-1, subsections);
+    // write_time(width, height, pattern, points-1, subsections);
 
     if (points > 2)
         stroke(stroke_color)
