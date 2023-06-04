@@ -2,10 +2,9 @@ function setup() {
     h = 900
     w = 900
     createCanvas(h, w);
-    textSize(16);
-    textAlign(CENTER)
-
     rotation = 0
+    // textSize(16);
+    // textAlign(CENTER)
 
     colors = [];
     temp_colors = [];
@@ -40,8 +39,8 @@ function setup() {
         colors[j+1] = color(cur[0], cur[1], cur[2], 255);
     }
 
-//     day = day()
-    strokeWeight(2.5 * (day() - 1) / 30)
+    day = day()
+    strokeWeight(2.5 * (day - 1) / 30)
     stroke_color = color(17)
 }
 
@@ -163,7 +162,7 @@ function draw_shapes(x_origin, y_origin, color_amount, points, subsections) {
             draw_undulating_shape(points, r, j, color_amount)
         } else if (j % 15 != 0) {
             r = r_outer * (1 - j / subsections) ^ diminish;
-            rotate(rotation + 1 / (j + 3));
+            rotate(rotation + 1 / (j**.7 + 3));
             draw_undulating_shape(points, r, j, color_amount);
         } else {
             r = r_outer * (1 - j / subsections) ^ diminish;
@@ -234,10 +233,10 @@ function draw_hour(points, width, cur) {
     }
 }
 
-// function write_time(width, height, hour, minute, second) {
-//     fill(color(255, 90, 90));
-//     text(hour + ":" + minute + ":" + second + ":" + day, 4*width / 5, height-4);
-// }
+function write_time(width, height, hour, minute, second) {
+    fill(color(90, 90, 90));
+    text(hour + ":" + minute + ":" + second + ":" + day, 4*width / 5, height-4);
+}
 
 function draw() {
     pattern = hour();
@@ -257,8 +256,10 @@ function draw() {
         colors[0] = white;
         background(black);
     }
+    // background(background_color)
 
-//     write_time(width, height, pattern, points-1, subsections);
+
+    write_time(width, height, pattern, points-1, subsections);
 
     if (points > 2)
         stroke(stroke_color)
