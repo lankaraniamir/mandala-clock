@@ -2,9 +2,11 @@ function setup() {
     h = 900
     w = 900
     createCanvas(h, w);
+    textSize(16);
+    textAlign(CENTER)
+
     rotation = 0
 
-    // Colors randomly created upon initialization
     colors = [];
     temp_colors = [];
     c1 = Math.floor(Math.random() * 256);
@@ -30,6 +32,7 @@ function setup() {
         }
         temp_colors[i] = temp
     }
+
     white = color(255);
     black = color(0);
     for (let j = 0; j < 11; j++) {
@@ -37,10 +40,8 @@ function setup() {
         colors[j+1] = color(cur[0], cur[1], cur[2], 255);
     }
 
-
-    // Day of month defines stroke weight
-    // strokeWeight(2.5 * (day() - 1) / 30)
-    strokeWeight(2.5 * (day() + 9) / 30)
+    day = day()
+    strokeWeight(2.5 * (day - 1) / 30)
     stroke_color = color(17)
 }
 
@@ -68,38 +69,65 @@ function get_highest_relevant_coprime(skip, n) {
     return skip
 }
 
-// function draw_undulating_shape(points, radius, x_origin, y_origin, j) {
-function draw_undulating_shape(points, radius, j) {
-    if (points > 2) {
-        fill(colors[j])
-    } else if (points == 1) {
-        fill(colors[j])
-        circle(0, 0, 2 * radius)
-        return 0;
+function draw_undulating_shape(points, radius, cur, color_amount) {
+    j = cur % color_amount
+    if (color_amount > 1) {
+        if (points != 2)
+            fill(colors[j])
+        else
+            stroke(colors[j])
+
+    } else if ((colors[0] == white && (cur < 15 || (cur >= 30 && cur < 45)))
+            ||(colors[0] == black && ((cur >= 15 && cur < 30) || cur >= 45))) {
+        if (points != 2) {
+            fill(white)
+            stroke(stroke_color)
+        } else {
+            stroke(white)
+        }
+    } else if (points != 2){
+        fill(black)
+        stroke(white)
     } else {
-        stroke(colors[j])
+        stroke(stroke_color)
     }
 
-    beginShape();
-    half = Math.floor(points / 2);
-    skip = get_highest_relevant_coprime(half, points);
-    for (let i = 0; i < points; i++) {
-        cur = (i * skip) % points;
-        angle = 2 * PI * cur / points
-        x = Math.cos(angle) * radius;
-        y = Math.sin(angle) * radius;
-        vertex(x, y);
+    if (points > 1) {
+        beginShape();
+        half = Math.floor(points / 2);
+        skip = get_highest_relevant_coprime(half, points);
+        for (let i = 0; i < points; i++) {
+            cur = (i * skip) % points;
+            angle = 2 * PI * cur / points
+            x = Math.cos(angle) * radius;
+            y = Math.sin(angle) * radius;
+            vertex(x, y);
+        }
+        endShape();
+    } else {
+        circle(0, 0, 2 * radius)
     }
-    endShape();
 }
 
-function draw_semi_undulating_shape(points, radius, j) {
-    if (points == 2)
-        stroke(colors[j])
-    else if (colors[0] == black)
-        fill(white)
-    else
+function draw_semi_undulating_shape(points, radius, j, color_amount) {
+    if (color_amount > 1) {
+        if (points != 2) {
+            if (colors[0] == black)
+                fill(white)
+            else
+                fill(black)
+        } else {
+            stroke(colors[j % color_amount])
+            fill(colors[(j-1) % color_amount])
+        }
+    } else if ((colors[0] == white && j == 30)
+            || (colors[0] == black && (j == 15 || j == 45))) {
         fill(black)
+        stroke(white)
+    } else {
+        fill(white)
+        stroke(stroke_color)
+    }
 
     half = Math.floor(points / 2);
     skip = get_highest_relevant_coprime(half, points);
@@ -132,29 +160,25 @@ function draw_shapes(x_origin, y_origin, color_amount, points, subsections) {
     for (let j = 0; j < subsections; j++) {
         if (j == 0) {
             r = r_outer + .037 * subsections * width / 120
-            draw_undulating_shape(points, r, j)
+            draw_undulating_shape(points, r, j, color_amount)
         } else if (j % 15 != 0) {
             r = r_outer * (1 - j / subsections) ^ diminish;
             rotate(rotation + 1 / (j + 3));
-            draw_undulating_shape(points, r, j % color_amount);
+            draw_undulating_shape(points, r, j, color_amount);
         } else {
             r = r_outer * (1 - j / subsections) ^ diminish;
             rotate(8 * rotation + 3 / (j))
-            draw_semi_undulating_shape(points, r, j % color_amount);
+            draw_semi_undulating_shape(points, r, j, color_amount);
             if (points > 1)
-                draw_undulating_shape(points, r, j % color_amount);
+                draw_undulating_shape(points, r, j, color_amount);
         }
     }
 }
 
 function draw_hour(points, width, cur) {
-// function draw_hour(points, radius, j) {
     l = .041
     sep = .09
     radius = .95 * width * l
-    // if (points == 1)
-    //     stroke(colors[0])
-    // else
 
     loc = []
     if (cur == 0)
@@ -201,7 +225,7 @@ function draw_hour(points, width, cur) {
         return 0;
     } else {
         beginShape();
-        stroke(colors[cur])
+
         vertex(loc[0] + Math.cos(7*PI/4) * radius*.85,
             loc[1] + Math.sin(7*PI/4) * radius*.85);
         vertex(loc[0] + Math.cos(3*PI/4) * radius*.85,
@@ -210,14 +234,16 @@ function draw_hour(points, width, cur) {
     }
 }
 
+function write_time(width, height, hour, minute, second) {
+    fill(color(90, 90, 90));
+    text(hour + ":" + minute + ":" + second + ":" + day, 4*width / 5, height-4);
+}
+
 function draw() {
-    // pattern = hour();
-    pattern = 12;
-    // points = minute() + 1; //edges=minutes
-    points = 15; //edges=minutes
+    pattern = hour();
+    points = minute()+1;
     subsections = second();
 
-    stroke(stroke_color)
     if (pattern > 12) {
         color_amount = pattern - 12;
         colors[0] = black;
@@ -232,10 +258,12 @@ function draw() {
         background(black);
     }
 
-    if (points <= 1)
-        stroke(colors[0])
-    else
+    write_time(width, height, pattern, points-1, subsections);
+
+    if (points > 2)
         stroke(stroke_color)
+    else if (points == 2)
+        stroke(colors[0])
 
     for (i=0; i < color_amount; i++) {
         draw_hour(points, width, i);
