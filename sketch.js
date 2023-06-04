@@ -40,8 +40,8 @@ function setup() {
         colors[j+1] = color(cur[0], cur[1], cur[2], 255);
     }
 
-    day = day()
-    strokeWeight(2.5 * (day - 1) / 30)
+//     day = day()
+    strokeWeight(2.5 * (day() - 1) / 30)
     stroke_color = color(17)
 }
 
@@ -234,10 +234,10 @@ function draw_hour(points, width, cur) {
     }
 }
 
-function write_time(width, height, hour, minute, second) {
-    fill(color(255, 90, 90));
-    text(hour + ":" + minute + ":" + second + ":" + day, 4*width / 5, height-4);
-}
+// function write_time(width, height, hour, minute, second) {
+//     fill(color(255, 90, 90));
+//     text(hour + ":" + minute + ":" + second + ":" + day, 4*width / 5, height-4);
+// }
 
 function draw() {
     pattern = hour();
@@ -258,7 +258,7 @@ function draw() {
         background(black);
     }
 
-    write_time(width, height, pattern, points-1, subsections);
+//     write_time(width, height, pattern, points-1, subsections);
 
     if (points > 2)
         stroke(stroke_color)
